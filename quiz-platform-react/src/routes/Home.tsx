@@ -34,14 +34,14 @@ const Home = () => {
                             </div>
                         </div>
                     </div>
-                    <div className="col-md-6 offset-lg-2 col-lg-4">
-                        <div className="card">
-                            <div className="card-body">
-                                <h3 className="text-center mb-5">Create</h3>
-                                <LoginForm />
-                            </div>
-                        </div>
-                    </div>
+                    {/*<div className="col-md-6 offset-lg-2 col-lg-4">*/}
+                    {/*    <div className="card">*/}
+                    {/*        <div className="card-body">*/}
+                    {/*            <h3 className="text-center mb-5">Create</h3>*/}
+                    {/*            <LoginForm />*/}
+                    {/*        </div>*/}
+                    {/*    </div>*/}
+                    {/*</div>*/}
                 </div>
             </div>
         </div>
