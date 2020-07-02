@@ -1,14 +1,18 @@
 package com.astlaure.quizplatform.services;
 
 import com.astlaure.quizplatform.converters.QuizConverter;
+import com.astlaure.quizplatform.converters.QuizSummaryConverter;
 import com.astlaure.quizplatform.entities.Choice;
 import com.astlaure.quizplatform.entities.Question;
 import com.astlaure.quizplatform.entities.Quiz;
 import com.astlaure.quizplatform.exceptions.BadValidationDataException;
 import com.astlaure.quizplatform.models.QuizRequest;
 import com.astlaure.quizplatform.models.QuizResponse;
+import com.astlaure.quizplatform.models.QuizSummaryResponse;
 import com.astlaure.quizplatform.repositories.QuizRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -21,17 +25,26 @@ public class QuizService {
 
     private final QuizRepository quizRepository;
     private final QuizConverter quizConverter;
+    private final QuizSummaryConverter quizSummaryConverter;
 
     @Autowired
-    public QuizService(QuizRepository quizRepository, QuizConverter quizConverter) {
+    public QuizService(QuizRepository quizRepository, QuizConverter quizConverter, QuizSummaryConverter quizSummaryConverter) {
         this.quizRepository = quizRepository;
         this.quizConverter = quizConverter;
+        this.quizSummaryConverter = quizSummaryConverter;
     }
 
     public List<QuizResponse> findAll() {
         return quizRepository.findAll().stream()
                 .map(quizConverter::convert)
                 .collect(Collectors.toList());
+    }
+
+    public List<QuizSummaryResponse> findSummaryPage(int page, int size) {
+        return quizRepository.findAll(PageRequest.of(page, size, Sort.by(Sort.Direction.DESC, "creationDate")))
+            .getContent().stream()
+            .map(quizSummaryConverter::convert)
+            .collect(Collectors.toList());
     }
 
     public QuizResponse findOne(Long id) {

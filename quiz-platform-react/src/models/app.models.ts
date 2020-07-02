@@ -24,6 +24,13 @@ export interface Quiz {
     questions: Question[];
 }
 
+export interface QuizSummary {
+    id: number;
+    name: string;
+    creationDate: Date;
+    length: number;
+}
+
 export const initialQuiz: Quiz = {
     name: '',
     date: new Date(),

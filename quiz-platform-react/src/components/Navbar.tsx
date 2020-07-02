@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 
 const Navbar = () => {
     const [collapse, setCollapse] = useState(true);
+    const location = window.location.pathname;
 
     const handleToggle = () => {
         setCollapse(!collapse);
@@ -19,20 +20,20 @@ const Navbar = () => {
 
             <div className={`navbar-collapse ${collapse ? 'collapse' : null}`} id="navbarSupportedContent">
                 <ul className="navbar-nav mr-auto">
-                    <li className="nav-item active">
-                        <Link className="nav-link" to="/">Home <span className="sr-only">(current)</span></Link>
+                    <li className={`nav-item ${ location === '/' ? 'active' : null}`} onClick={() => setCollapse(true)}>
+                        <Link className="nav-link" to="/">Home</Link>
                     </li>
-                    <li className="nav-item">
+                    <li className={`nav-item ${ location.includes('/quiz') ? 'active' : null}`} onClick={() => setCollapse(true)}>
                         <Link className="nav-link" to="/quiz">Quiz</Link>
                     </li>
-                    <li className="nav-item">
+                    <li className={`nav-item ${ location === '/about' ? 'active' : null}`} onClick={() => setCollapse(true)}>
                         <Link className="nav-link" to="/about">About</Link>
                     </li>
                 </ul>
-                <form className="form-inline my-2 my-lg-0">
-                    <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"/>
-                        <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                </form>
+                {/*<form className="form-inline my-2 my-lg-0">*/}
+                {/*    <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"/>*/}
+                {/*        <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>*/}
+                {/*</form>*/}
             </div>
         </nav>
     )

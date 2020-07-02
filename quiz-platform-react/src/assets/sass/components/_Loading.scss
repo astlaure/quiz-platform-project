@@ -1,0 +1,114 @@
+.loading-component {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .balls-container {
+        display: flex;
+        align-items: flex-end;
+        height: 6rem;
+    }
+
+    .ball {
+        width: 4rem;
+        height: 4rem;
+        display: block;
+        border-radius: 50px;
+        margin-left: 0.5rem;
+        margin-right: 0.5rem;
+    }
+
+    .first {
+        background-color: #391931;
+        animation-name: jump;
+        animation-duration: 1s;
+        animation-iteration-count: infinite;
+        margin-left: 0;
+    }
+
+    .second {
+        background-color: #5C2039;
+        animation-name: jump2;
+        animation-duration: 1s;
+        animation-iteration-count: infinite;
+    }
+
+    .third {
+        background-color: #FFFFFF;
+        animation-name: jump3;
+        animation-duration: 1s;
+        animation-iteration-count: infinite;
+    }
+}
+
+@keyframes jump {
+    0% {
+        margin-bottom: 0;
+    }
+
+    25% {
+        margin-bottom: 3rem;
+    }
+
+    50% {
+        margin-bottom: 0;
+    }
+
+    75% {
+        margin-bottom: 0;
+    }
+
+    100% {
+        margin-bottom: 0;
+    }
+}
+
+@keyframes jump2 {
+    0% {
+        margin-bottom: 0;
+    }
+
+    25% {
+        margin-bottom: 0;
+    }
+
+    50% {
+        margin-bottom: 3rem;
+    }
+
+    75% {
+        margin-bottom: 0;
+    }
+
+    100% {
+        margin-bottom: 0;
+    }
+}
+
+@keyframes jump3 {
+    0% {
+        margin-bottom: 0;
+    }
+
+    25% {
+        margin-bottom: 0;
+    }
+
+    50% {
+        margin-bottom: 0;
+    }
+
+    75% {
+        margin-bottom: 3rem;
+    }
+
+    100% {
+        margin-bottom: 0;
+    }
+}

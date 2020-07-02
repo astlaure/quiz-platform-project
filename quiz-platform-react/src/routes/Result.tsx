@@ -14,7 +14,7 @@ const Result = () => {
             <div className="container">
                 <h1 className="text-center">Result</h1>
                 <div className="row justify-content-center">
-                    <div className="col-md-8 mb-5">
+                    <div className="col-lg-8 mb-5">
                         <div className="card">
                             <div className="card-body">
                                 <p className="score-text">Your score is: {quizContext.result} %</p>

@@ -18,12 +18,12 @@ const App = () => {
             <Navbar/>
             <div className="hero" />
             <TransitionGroup>
-                <CSSTransition key={location.key} classNames="my-node" timeout={300}>
+                <CSSTransition key={location.key} classNames="my-node" timeout={1000}>
                     <Switch location={location}>
-                        <Route path="/about" component={About} />
-                        <Route path="/create" component={QuizCreate} />
-                        <Route path="/quiz/list" component={QuizList} />
+                        {/*<Route path="/create" component={QuizCreate} />*/}
+                        {/*<Route path="/quiz/list" component={QuizList} />*/}
 
+                        <Route path="/about" component={About} />
                         <Route path="/quiz/:id/result" component={Result} />
                         <Route path="/quiz/:id" component={QuizPage} />
                         <Route path="/quiz" component={QuizGrid} />
