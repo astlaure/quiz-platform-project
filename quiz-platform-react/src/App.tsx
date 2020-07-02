@@ -13,10 +13,20 @@ import Result from './routes/Result';
 const App = () => {
     const location = useLocation();
 
+    if (document.getElementById('hero')) {
+        if (location.pathname === '/quiz/1') {
+            document.getElementById('hero')!.className = 'hero geek';
+        } else {
+            document.getElementById('hero')!.className = 'hero';
+        }
+    }
+
     return (
         <div className="app">
             <Navbar/>
-            <div className="hero" />
+            <div id="hero" className="hero">
+                <div />
+            </div>
             <TransitionGroup>
                 <CSSTransition key={location.key} classNames="my-node" timeout={1000}>
                     <Switch location={location}>

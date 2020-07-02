@@ -15,10 +15,23 @@
 #root {
   .hero {
     background-image: url("../images/hero2.jpg");
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
     height: 100vh;
     width: 100vw;
     position: fixed;
     z-index: -1;
     top: 0;
+
+      &.geek {
+          background-image: url("../images/geek-level.jpg");
+
+          div {
+              height: 100%;
+              width: 100%;
+              background-color: rgba(0, 0, 0, 0.5);
+          }
+      }
   }
 }
