@@ -26,6 +26,11 @@
 
       &.geek {
           background-image: url("../images/geek-level.jpg");
+          background-position-x: 10%;
+
+          @media screen and (min-width: $desktop) {
+              background-position-x: center;
+          }
 
           div {
               height: 100%;

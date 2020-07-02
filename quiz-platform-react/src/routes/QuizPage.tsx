@@ -18,6 +18,7 @@ const QuizPage = () => {
     const quizContext = useContext(QuizContext);
 
     useEffect(() => {
+        document.getElementById('hero')!.className = 'hero geek';
         httpClient.get(`/api/quiz/${params.id}`)
             .then((response: Quiz) => {
                 setState({ ...state, quiz: response });
