@@ -1,0 +1,23 @@
+@import "vendors";
+@import "animations";
+
+@import "routes/Home";
+@import "routes/QuizList";
+@import "routes/QuizGrid";
+@import "routes/QuizCreate";
+@import "routes/QuizPage";
+@import "routes/About";
+@import "routes/Result";
+
+@import "components/Navbar";
+
+#root {
+  .hero {
+    background-image: url("../images/hero2.jpg");
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    z-index: -1;
+    top: 0;
+  }
+}

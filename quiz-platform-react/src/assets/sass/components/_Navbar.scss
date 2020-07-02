@@ -1,0 +1,23 @@
+.navbar {
+  background-color: transparent;
+  font-weight: 600;
+  height: 4rem;
+
+  &.opened {
+    background-color: rgba(0,0,0,0.8);
+
+    .navbar-collapse {
+      background-color: rgba(0,0,0,0.7);
+      width: 100%;
+      margin-left: -15px;
+      margin-right: -15px;
+      position: fixed;
+      top: 4rem;
+      padding: 15px;
+    }
+  }
+
+  .navbar-brand {
+    font-style: italic;
+  }
+}
