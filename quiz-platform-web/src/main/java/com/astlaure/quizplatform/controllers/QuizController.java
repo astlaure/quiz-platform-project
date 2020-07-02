@@ -26,6 +26,12 @@ public class QuizController {
         return ResponseEntity.status(200).body(quizService.findAll());
     }
 
+    @GetMapping("/summaries")
+    public ResponseEntity<?> getQuizSummaries(@RequestParam(value = "page", defaultValue = "0", required = false) int page,
+                                              @RequestParam(value = "size", defaultValue = "5", required = false) int size) {
+        return ResponseEntity.status(200).body(quizService.findSummaryPage(page, size));
+    }
+
     @GetMapping("/{id}")
     public ResponseEntity<?> getQuiz(@PathVariable("id") Long id) {
         return ResponseEntity.status(200).body(quizService.findOne(id));

@@ -18,7 +18,7 @@ const App = () => {
             <Navbar/>
             <div className="hero" />
             <TransitionGroup>
-                <CSSTransition key={location.key} classNames="my-node" timeout={300}>
+                <CSSTransition key={location.key} classNames="my-node" timeout={1000}>
                     <Switch location={location}>
                         <Route path="/about" component={About} />
                         <Route path="/create" component={QuizCreate} />

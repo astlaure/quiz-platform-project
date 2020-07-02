@@ -7,7 +7,7 @@ const QuizGrid = () => {
     const [state, setState] = useState([]);
 
     useEffect(() => {
-        httpClient.get('/api/quiz')
+        httpClient.get('/api/quiz/summaries?size=8')
             .then((response) => setState(response))
             .catch(() => {});
     }, [])
@@ -18,8 +18,8 @@ const QuizGrid = () => {
                 <h1 className="text-center">Quiz</h1>
                 <div className="row">
                     {
-                        state.map((quiz, index) => {
-                            return <QuizGridItem key={index} quiz={quiz} />
+                        state.map((summary, index) => {
+                            return <QuizGridItem key={index} summary={summary} />
                         })
                     }
                 </div>

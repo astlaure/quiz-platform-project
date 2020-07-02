@@ -4,6 +4,7 @@ import useHttpClient from '../hooks/useHttpClient';
 import { initialQuiz, Quiz } from '../models/app.models';
 import SingleQuestion from '../components/SingleQuestion';
 import QuizContext from '../core/QuizContext';
+import Loading from '../components/Loading';
 
 const QuizPage = () => {
     const params = useParams<{ id: string }>();
@@ -13,6 +14,7 @@ const QuizPage = () => {
         quiz: initialQuiz,
         answers: {} as { [questionID: number]: number }
     });
+    const [loading, setLoading] = useState(true);
     const quizContext = useContext(QuizContext);
 
     useEffect(() => {
@@ -20,7 +22,8 @@ const QuizPage = () => {
             .then((response: Quiz) => {
                 setState({ ...state, quiz: response });
             })
-            .catch(() => {});
+            .catch(() => {})
+            .finally(() => setLoading(false));
     }, [])
 
     const changeAnswer = (index: number, value: number) => {
@@ -43,34 +46,40 @@ const QuizPage = () => {
     return (
         <div className="quiz-page-component">
             <div className="container mb-5">
-                <h1 className="text-center">{state.quiz.name}</h1>
-                <div className="row justify-content-center">
-                    <div className="col-md-8">
-                        <div className="card">
-                            <div className="card-body">
-                                <form action="#" onSubmit={handleSubmit}>
-                                    {
-                                        state.quiz.questions.map((question) => {
-                                            switch (question.type) {
-                                                case 'SINGLE':
-                                                    return <SingleQuestion
-                                                        key={question.id}
-                                                        question={question}
-                                                        answer={state.answers[question.id]}
-                                                        changeEvent={(value: number) => changeAnswer(question.id, value)} />;
-                                                case 'MULTI':
-                                                case 'LONG':
-                                                default:
-                                                    return null;
-                                            }
-                                        })
-                                    }
-                                    <input type="submit" className="btn btn-primary w-100" value="SUBMIT"/>
-                                </form>
+                {
+                    loading ? <Loading /> : (
+                        <React.Fragment>
+                            <h1 className="text-center">{state.quiz.name}</h1>
+                            <div className="row justify-content-center">
+                                <div className="col-lg-8">
+                                    <div className="card">
+                                        <div className="card-body">
+                                            <form action="#" onSubmit={handleSubmit}>
+                                                {
+                                                    state.quiz.questions.map((question) => {
+                                                        switch (question.type) {
+                                                            case 'SINGLE':
+                                                                return <SingleQuestion
+                                                                    key={question.id}
+                                                                    question={question}
+                                                                    answer={state.answers[question.id]}
+                                                                    changeEvent={(value: number) => changeAnswer(question.id, value)} />;
+                                                            case 'MULTI':
+                                                            case 'LONG':
+                                                            default:
+                                                                return null;
+                                                        }
+                                                    })
+                                                }
+                                                <input type="submit" className="btn btn-primary w-100" value="SUBMIT"/>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                </div>
+                        </React.Fragment>
+                    )
+                }
             </div>
         </div>
     )
